@@ -41,29 +41,33 @@ def dog():
 If you have  One or more of IPs.
 Please follow the request_dog.py
 ```python
-@app.route('/trigger_path', methods=['GET'])
+@app.route('/trigger_key/<user_name>/<uuid>', methods=['GET'])
 app.run(host="0.0.0.0", port=18116, debug=True)
 ```
 Replace `your server ip or domain` to your different IP
 ```python
-print(requests.get("http://your server ip or domain:18116/trigger_path").text)
+print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
 ```
-To statr popdog auto click, paste `http://your server ip or domain:18116/trigger_path` to browser and u will get DONE on your browser content.
+To statr popdog auto click, paste `http://your server ip or domain:18116/trigger_key/f{user_name}/f{uuid} to browser and u will get DONE on your browser content.
+![Start](./photo_start.png "Start")
+Server A.
+![ServerA](./serverA.png "ServerA")
+and server A get a error! So A request B. And B continue click.
+![ServerB](./serverB.png "ServerB")
 For instance.
-![A-B](./photo.png "A-B")
-A Server:
+Server A:
 `
 IP: xxx.xxx.xxx.xxx
 `
 Request_dog.py
 ```python
-print(requests.get("http://yyy.yyy.yyy.yyy:18116/trigger_path").text)
+print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
 ```
-B Server:
+Server B:
 `
 IP: yyy.yyy.yyy.yyy
 `
 Request_dog.py
 ```python
-print(requests.get("http://xxx.xxx.xxx.xxx:18116/trigger_path").text)
+print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
 ```
