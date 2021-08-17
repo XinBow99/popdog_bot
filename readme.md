@@ -48,6 +48,7 @@ Replace `your server ip or domain` to your different IP
 ```python
 print(requests.get("http://your server ip or domain:18116/trigger_path").text)
 ```
+To statr popdog auto click, paste `http://your server ip or domain:18116/trigger_path` to browser and u will get DONE on your browser content.
 For instance.
 ![A-B](./photo.png "A-B")
 A Server:
