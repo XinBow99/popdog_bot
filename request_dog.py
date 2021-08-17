@@ -37,13 +37,14 @@ def dog():
         if "Do not pet the Pop Dog too much" in res:
             print("[Got error! should break]", res)
             # Call b server, if a server if got error.
-            time.sleep(2)
             print(requests.get(
                 "http://your server ip or domain:18116/trigger_path").text)
             print("[Watting for next request]")
             break
         else:
             print(res, "[Great]")
+            # add sleep ref popdog.click source code in content
+            time.sleep(5.603)
 
 
 app.run(host="0.0.0.0", port=18116, debug=True)
