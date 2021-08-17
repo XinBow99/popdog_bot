@@ -1,6 +1,7 @@
 import flask
 import threading
 import requests
+import time
 requests.packages.urllib3.disable_warnings()
 
 app = flask.Flask(__name__)
@@ -36,6 +37,7 @@ def dog():
         if "Do not pet the Pop Dog too much" in res:
             print("[Got error! should break]", res)
             # Call b server, if a server if got error.
+            time.sleep(2)
             print(requests.get(
                 "http://your server ip or domain:18116/trigger_path").text)
             print("[Watting for next request]")
