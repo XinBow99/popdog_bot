@@ -49,7 +49,7 @@ Replace `your server ip or domain` to your different IP
 print(requests.get("http://your server ip or domain:18116/trigger_path").text)
 ```
 For instance.
-
+![A-B](./photo.png "A-B")
 A Server:
 `
 IP: xxx.xxx.xxx.xxx

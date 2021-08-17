@@ -16,7 +16,7 @@ def dog():
     data = {
         "clicks": 2000,
         # change username to your name
-        "username": "KaoDuanYeeMeow",
+        "username": "github.com/XinBow99/request_dog",
         # change uuid to your uuid
         "uuid": ""
     }
