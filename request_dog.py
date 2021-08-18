@@ -75,7 +75,7 @@ def dog(user_name, uuid):
                 uuids[uuid].update({
                     'clicks': res.text
                 })
-                time.sleep(1.5)
+                time.sleep(3.603)
         except:
             user_name = user_name.replace("/", "@")
             call_other_server(
