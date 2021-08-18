@@ -1,5 +1,5 @@
-# Request Dog
-
+# Popdog.click bot
+Author Xinbow99
 For popdog.click
 
 ## Installation
