@@ -44,9 +44,13 @@ Please follow the command
 python3 request_dog.py call_ip trigger_path
 ```
 python3 request_dog.py 192.168.1.3 6d8d324b4a11cf4ed
+
 And you can run `QuickRequest.py` to start your bot
+
 replace trigger_path to custom token path
+
 For instance.
+
 In you have two servers, server A and B.
 
 Server A start command: 
