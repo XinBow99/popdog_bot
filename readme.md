@@ -8,7 +8,7 @@ The program needs flask and requests packages.
 
 ## Usage
 
-If you only have one IP. Please follow this code
+### If you only have one IP. Please follow this code
 ```python
 def dog():
     url = "https://popdog.click/clicked/v2"
@@ -38,36 +38,30 @@ def dog():
         else:
             print(res, "[Great]")
 ```
-If you have  One or more of IPs.
-Please follow the request_dog.py
-```python
-@app.route('/trigger_key/<user_name>/<uuid>', methods=['GET'])
-app.run(host="0.0.0.0", port=18116, debug=True)
+### If you have  One or more of IPs.
+Please follow the command
+```bash
+python3 request_dog.py call_ip trigger_path
 ```
-Replace `your server ip or domain` to your different IP
-```python
-print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
-```
-To statr popdog auto click, paste `http://your server ip or domain:18116/trigger_key/f{user_name}/f{uuid} to browser and u will get DONE on your browser content.
-![Start](./photo_start.png "Start")
-Server A.
-![ServerA](./serverA.png "ServerA")
-and server A get a error! So A request B. And B continue click.
-![ServerB](./serverB.png "ServerB")
+python3 request_dog.py 192.168.1.3 6d8d324b4a11cf4ed
+And you can run `QuickRequest.py` to start your bot
+replace trigger_path to custom token path
 For instance.
-Server A:
-`
-IP: xxx.xxx.xxx.xxx
-`
-Request_dog.py
-```python
-print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
+In you have two servers, server A and B.
+Server A start command: 
+```bash
+python3 request_dog.py server_b_IP 6d8d324b4a11cf4ed
 ```
-Server B:
-`
-IP: yyy.yyy.yyy.yyy
-`
-Request_dog.py
-```python
-print(requests.get("http://ip or domain:18116/trigger_key/f{user_name}/f{uuid}").text)
+Server B start command: 
+```bash
+python3 request_dog.py server_B_IP 6d8d324b4a11cf4ed
 ```
+And you can call `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/create/bot-name/bot-uuid` and `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/lastupdate`
+
+Demo.
+create:
+![create](./create.png "create")
+lastupdate:
+![lastupdate](./lastupdate.png "lastupdate")
+
+
