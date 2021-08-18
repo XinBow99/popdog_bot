@@ -1,15 +1,28 @@
 import requests
-
+import random
 users = [
-    ("tw-Xinbow99-1","UUID"),
-    ("tw-Xinbow99-2","UUID"),
-    ("tw-Xinbow99-3","UUID"),
-    ("github.com@XinBow99@request_dog","UUID"),
-    ("823打高端","UUID")
+    ("github.com@XinBow99@request_dog", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("tw-Xinbow99-1",                   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("tw-Xinbow99-2",                   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("tw-Xinbow99-3",                   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("TW-KHC-Xinbow99-1",               "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("TW-KHC-Xinbow99-2",               "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("TW-KHC-Xinbow99-3",               "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("TW-KHC-Xinbow99-4",               "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+    ("www.linkedin.com@in@Shiwen99",    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
 ]
 for user in users:
     x = user
-    r = "http://Main_server_ip:18116/trigger_path/create/{}/{}".format(x[0],x[1])
-    print((r))
+    r = "http://{}:18116/trigger_path/create/{}/{}".format(
+        "127.0.0.1",x[0], x[1])
     res = requests.get(r)
     print(res.text)

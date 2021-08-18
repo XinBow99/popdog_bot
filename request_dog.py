@@ -1,8 +1,10 @@
 import flask
+from flask_cors import CORS
 import threading
 import requests
 import time
 import sys
+import random
 requests.packages.urllib3.disable_warnings()
 
 # g
@@ -11,7 +13,7 @@ uuids = {
 }
 
 app = flask.Flask(__name__)
-
+CORS(app)
 if __name__ == "__main__":
     print("[SetConfig]loading...")
     if len(sys.argv) < 3:
@@ -50,32 +52,49 @@ def dog(user_name, uuid):
         # change uuid to your uuid
         "uuid": uuid
     }
-    headers = {
-        "Accept": "*/*",
-        "Content-Type": "application/json;charset=utf-8",
-        "Origin": "https://popdog.click",
-        "Accept-Language": "zh-tw",
-        "Host": "popdog.click",
-        "User-Agent": uuid,
-        "Referer": "https://popdog.click/",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
-    }
+    req_times = 0
+    start_click = 0
+    start_time = time.time()
     while open('config.txt', 'r', encoding='utf-8').read().strip("\n") == "1":
         uuids[uuid] = {
-            user_name: str(time.ctime())
+            "bot_name": user_name,
+            "req_times": req_times,
+            "last_runtime": str(time.ctime())
+        }
+        headers = {
+            "Accept": "*/*",
+            "Content-Type": "application/json;charset=utf-8",
+            "Origin": "https://popdog.click",
+            "Accept-Language": "zh-tw",
+            "Host": "popdog.click",
+            "User-Agent": uuid + str(random.randint(1, 1000000)),
+            "Referer": "https://popdog.click/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
         }
         try:
             res = requests.post(url, headers=headers, json=data, verify=False)
+            req_times += 1
             if "Do not pet the Pop Dog too much" in res.text or res.status_code != 200:
                 raise "Pop Dog Request Error." + str(res.status_code)
             else:
-                print("[Perfect]", user_name, '\n', res.text,
-                      '\n-------------------------------------------')
+                if start_click == 0:
+                    start_click = int(res.json()['clicks'])
+                print("[Perfect] {} [Elapsed time] {:.2f}s\n[UUID] {}\n[Name] {}\n[Res] {}\n[Diff] {}\n{}".format(
+                    req_times,time.time() - start_time,
+                    uuid,
+                    user_name,
+                    res.text,
+                    int(res.json()['clicks']) - start_click,
+                    "----------------------------------------------------"
+                ))
                 uuids[uuid].update({
                     'clicks': res.text
                 })
-                time.sleep(3.603)
+                if req_times % 25 == 0:
+                    time.sleep(15)
+                else:
+                    time.sleep(7.5)
         except:
             user_name = user_name.replace("/", "@")
             call_other_server(
@@ -90,9 +109,9 @@ def dog(user_name, uuid):
 
 def call_other_server(call_server, user_name, uuid, trigger, error_type):
     global uuids
-    time.sleep(3.6)
-    print("[ERROR]", user_name, error_type,
+    print("[ERROR-Wait-For-10-Secs]", user_name, error_type,
           '\n-------------------------------------------')
+    time.sleep(7.5)
     print(requests.get(
         f"http://{call_server}:18116/{trigger}/create/{user_name}/{uuid}").text)
     uuids[uuid].update({
