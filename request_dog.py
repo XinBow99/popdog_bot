@@ -75,7 +75,7 @@ def dog(user_name, uuid):
                 uuids[uuid].update({
                     'clicks': res.text
                 })
-                time.sleep(3.603)
+                time.sleep(1.5)
         except:
             user_name = user_name.replace("/", "@")
             call_other_server(
@@ -94,7 +94,7 @@ def call_other_server(call_server, user_name, uuid, trigger, error_type):
     print("[ERROR]", user_name, error_type,
           '\n-------------------------------------------')
     print(requests.get(
-        f"http://{call_server}:18116/{trigger}/{user_name}/{uuid}").text)
+        f"http://{call_server}:18116/{trigger}/create/{user_name}/{uuid}").text)
     uuids[uuid].update({
         'clicks': f'Call:{call_server}:18116'
     })
