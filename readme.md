@@ -48,13 +48,14 @@ And you can run `QuickRequest.py` to start your bot
 replace trigger_path to custom token path
 For instance.
 In you have two servers, server A and B.
+
 Server A start command: 
 ```bash
-python3 request_dog.py server_b_IP 6d8d324b4a11cf4ed
+python3 request_dog.py server_B_IP 6d8d324b4a11cf4ed
 ```
 Server B start command: 
 ```bash
-python3 request_dog.py server_B_IP 6d8d324b4a11cf4ed
+python3 request_dog.py server_A_IP 6d8d324b4a11cf4ed
 ```
 And you can call `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/create/bot-name/bot-uuid` and `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/lastupdate`
 
