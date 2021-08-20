@@ -88,6 +88,8 @@ Now you can access these routes.
 #### Success figure of start.
 ![start_one_ip](./DemoPhotos/start_one_ip.png "start_one_ip")
 
+---
+
 #### Simple demo
 It's my command:
 ```bash
@@ -121,6 +123,8 @@ Now you can access these routes.
 
 #### Success figure of start.
 ![start_another](./DemoPhotos/start_another.png "start_another")
+
+---
 
 #### Simple demo
 It's my command on my server A:
