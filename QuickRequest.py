@@ -10,7 +10,7 @@ TestBots = [
 
 # Call server config to start your bot
 ServerConfig = {
-    "ServerIP": "163.18.18.38",
+    "ServerIP": "163.xx.xx.38",
     "ServerPORT": "18006",
     "ServerTriggerPath": "server-a"
 }
