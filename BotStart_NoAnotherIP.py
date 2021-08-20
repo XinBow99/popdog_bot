@@ -159,9 +159,11 @@ def dog(bot_name: str, uuid: str):
     ###############################
     while True:
         # Set a variable of Config.json
+        config = open(file="config.json", mode="r", encoding="utf-8")
         readConfig = json.loads(
-            open(file="config.json", mode="r", encoding="utf-8").read()
+            config.read()
         )
+        config.close()
         # If BotStart value is 0
         if readConfig["BotStart"] == 0:
             print("[Config]{}\nBotStart value is change to 0!\n{}".format(
