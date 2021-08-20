@@ -1,8 +1,41 @@
-# POPDOG Bot
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="./DemoPhotos/robot.png" alt="Project logo"></a>
+</p>
+<h3 align="center">POPDOG BOT</h3>
 
-POPDOG Bot is a Python application for auto request click event of popdog RESTApi.
+<div align="center">
 
-## Installation
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/XinBow99/popdog_bot.svg)](https://github.com/XinBow99/popdog_bot/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/XinBow99/popdog_bot.svg)](https://github.com/XinBow99/popdog_bot/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
+
+---
+
+<p align="center"> POPDOG Bot is a Python application for auto request click event of popdog RESTApi.
+    <br> 
+</p>
+
+---
+
+## 📝 Table of Contents
+
+- [Installation](#Installation)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [TODO](../TODO.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+---
+
+## Installation <a name = "Installation"></a>
 
 Make sure your environment have those package.
 - flask
@@ -16,7 +49,7 @@ Make sure your environment have those package.
 - json
 
 and `python version >= 3`
-## Usage
+## 🏁 Getting Started <a name = "getting_started"></a>
 ### If you `only have an public IP.`
 #### Please run this bash command. 
 If you `only have an IP` or you want start on `one server(computer)`.
@@ -29,11 +62,11 @@ $python3 BotStart_NoAnotherIP.py -p 8080 -t trigger
 Now you can access these routes.
 
 To create a bot event
-- http://`<ip>`:`<port>`/`<trigger>`/create/`<Bot_Name>`/`<Bot_UUID>`
+- http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
 To visit bot status
 
-- http://`<ip>`:`<port>`/`<trigger>`/lastupdate
+- http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
 
 #### Success figure of start.
 ![start_one_ip](./DemoPhotos/start_one_ip.png "start_one_ip")
@@ -53,11 +86,13 @@ $python3 BotStart_HaveAnotherIP.py -p 18006 -t test_trigger -cip 172.18.18.18 -c
 Now you can access these routes.
 
 To create a bot event
-- http://`<ip>`:`<port>`/`<trigger>`/create/`<Bot_Name>`/`<Bot_UUID>`
+- http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
 To visit bot status
 
-- http://`<ip>`:`<port>`/`<trigger>`/lastupdate
+- http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
 
 #### Success figure of start.
 ![start_another](./DemoPhotos/start_another.png "start_another")
+
+---
