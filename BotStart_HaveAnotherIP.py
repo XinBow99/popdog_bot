@@ -227,12 +227,16 @@ def dog(bot_name: str, uuid: str):
                     # Set First Clicks Value.
                     if start_click == 0:
                         start_click = int(res.json()['clicks'])
-                    print("[Perfect] {} [Elapsed time] {:.2f}s\n[UUID] {}\n[Name] {}\n[Res] {}\n[Diff] {}\n[x-ratelimit-remaining] {}\n{}".format(
-                        req_times, time.time() - start_time,
+                    ElapsedTime = time.time() - start_time
+                    Diff = int(res.json()['clicks']) - start_click
+                    Avg = Diff / ElapsedTime
+                    print("[Perfect] {}\n[Elapsed time] {:.2f}s\n[UUID] {}\n[Name] {}\n[Res] {}\n[Diff] {}\n[Avg] {}\n[x-ratelimit-remaining] {}\n{}".format(
+                        req_times, ElapsedTime,
                         uuid,
                         bot_name,
                         res.text,
-                        int(res.json()['clicks']) - start_click,
+                        Diff,
+                        Avg,
                         res.headers['x-ratelimit-remaining'],
                         "----------------------------------------------------"
                     ))
