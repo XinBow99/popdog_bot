@@ -24,14 +24,7 @@
 ## 📝 Table of Contents
 
 - [Installation](#Installation)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ---
 
@@ -49,7 +42,7 @@ Make sure your environment have those package.
 - json
 
 and `python version >= 3`
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Usage <a name = "usage"></a>
 ### If you `only have an public IP.`
 #### Please run this bash command. 
 If you `only have an IP` or you want start on `one server(computer)`.
