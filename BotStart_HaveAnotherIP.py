@@ -1,5 +1,6 @@
 # packages import
 import flask
+from flask import config
 from flask_cors import CORS
 import threading
 import requests
@@ -8,6 +9,7 @@ import random
 import argparse
 import sys
 import json
+import gc
 requests.packages.urllib3.disable_warnings()
 ###########################
 # Global variables
@@ -192,9 +194,11 @@ def dog(bot_name: str, uuid: str):
     ###############################
     while True:
         # Set a variable of Config.json
+        config = open(file="config.json", mode="r", encoding="utf-8")
         readConfig = json.loads(
-            open(file="config.json", mode="r", encoding="utf-8").read()
+            config.read()
         )
+        config.close()
         # If BotStart value is 0
         if readConfig["BotStart"] == 0:
             print("[Config]{}\nBotStart value is change to 0!\n{}".format(
@@ -252,6 +256,7 @@ def dog(bot_name: str, uuid: str):
                     uuid=uuid,
                     error_type=str(e)
                 )
+                gc.collect()
                 # break this loop and thread.
                 break
         else:

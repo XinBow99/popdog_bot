@@ -43,6 +43,7 @@ Make sure your environment have those package.
 - argparse
 - sys
 - json
+- gc
 
 and `python version >= 3`
 
