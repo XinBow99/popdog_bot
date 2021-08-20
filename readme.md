@@ -1,72 +1,63 @@
-# Popdog.click bot
-Author Xinbow99
-For popdog.click
+# POPDOG Bot
+
+POPDOG Bot is a Python application for auto request click event of popdog RESTApi.
 
 ## Installation
 
-The program needs flask and requests packages.
+Make sure your environment have those package.
+- flask
+- flask_cors
+- threading
+- requests
+- time
+- random
+- argparse
+- sys
+- json
 
+and `python version >= 3`
 ## Usage
-
-### If you only have one IP. Please follow this code
-```python
-def dog():
-    url = "https://popdog.click/clicked/v2"
-    data = {
-        "clicks": 2000,
-        # change username to your name
-        "username": "KaoDuanYeeMeow",
-        # change uuid to your uuid
-        "uuid": ""
-    }
-    headers = {
-        "Accept": "*/*",
-        "Content-Type": "application/json;charset=utf-8",
-        "Origin": "https://popdog.click",
-        "Accept-Language": "zh-tw",
-        "Host": "popdog.click",
-        "User-Agent": "WTF",
-        "Referer": "https://popdog.click/",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
-    }
-    while open('config.txt', 'r', encoding='utf-8').read().strip("\n") == "1":
-        res = requests.post(url, headers=headers, json=data, verify=False).text
-        if "Do not pet the Pop Dog too much" in res:
-            print("[Got error! should break]", res)
-            time.sleep(5)
-        else:
-            print(res, "[Great]")
-```
-### If you have  One or more of IPs.
-Please follow the command
+### If you `only have an public IP.`
+#### Please run this bash command. 
+If you `only have an IP` or you want start on `one server(computer)`.
 ```bash
-python3 request_dog.py call_ip trigger_path
+$python3 BotStart_NoAnotherIP.py -p 8080 -t trigger
 ```
-python3 request_dog.py 192.168.1.3 6d8d324b4a11cf4ed
+- `-p` is Server start port
+- `-t` is Server trigger route
 
-And you can run `QuickRequest.py` to start your bot
+Now you can access these routes.
 
-replace trigger_path to custom token path
+To create a bot event
+- http://`<ip>`:`<port>`/`<trigger>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
-For instance.
+To visit bot status
 
-In you have two servers, server A and B.
+- http://`<ip>`:`<port>`/`<trigger>`/lastupdate
 
-Server A start command: 
+#### Success figure of start.
+![start_one_ip](./DemoPhotos/start_one_ip.png "start_one_ip")
+
+---
+### If you have more than the one public ip.
+#### Please run this bash command. 
 ```bash
-python3 request_dog.py server_B_IP 6d8d324b4a11cf4ed
+$python3 BotStart_HaveAnotherIP.py -p 18006 -t test_trigger -cip 172.18.18.18 -cp 18006 -ct test_trigger
 ```
-Server B start command: 
-```bash
-python3 request_dog.py server_A_IP 6d8d324b4a11cf4ed
-```
-And you can call `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/create/bot-name/bot-uuid` and `http://ServerA_or_B_Ip:18116/6d8d324b4a11cf4ed/lastupdate`
+- `-p` is Server start port
+- `-t` is Server trigger route
+- `-cip` is Another Server of public ip or domain
+- `-cp` is Another Server of running port
+- `-ct` is Another Server of running trigger route
 
-Demo.
-create:
-![create](./create.png "create")
-lastupdate:
-![lastupdate](./lastupdate.png "lastupdate")
+Now you can access these routes.
 
+To create a bot event
+- http://`<ip>`:`<port>`/`<trigger>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
+To visit bot status
+
+- http://`<ip>`:`<port>`/`<trigger>`/lastupdate
+
+#### Success figure of start.
+![start_another](./DemoPhotos/start_another.png "start_another")
