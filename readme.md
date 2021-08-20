@@ -99,7 +99,7 @@ http://127.0.0.1:8080/xinbow99/create/Bot_Name/989f8956-7413-49ad-9f90-954228366
 ```
 ![run_one_ip](./DemoPhotos/run_one_ip.png "run_one_ip")
 ---
-### If you have more than the one public ip.<a name="HaveManyPublicIP"></a>
+### If you have `more than the one public ip`.<a name="HaveManyPublicIP"></a>
 #### Please run this bash command. 
 ```bash
 $python3 BotStart_HaveAnotherIP.py -p 18006 -t test_trigger -cip 172.18.18.18 -cp 18006 -ct test_trigger
