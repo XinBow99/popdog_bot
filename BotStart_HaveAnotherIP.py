@@ -241,7 +241,7 @@ def dog(bot_name: str, uuid: str):
                         raise DogError(
                             "Change Server x-ratelimit-remaining is 1 or below!")
                     # pop per times should wait 8 secs to clicking continue
-                    time.sleep(8)
+                    time.sleep(7.5)
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need change another server and request create route. So Replace "/" to "@"
@@ -269,6 +269,7 @@ def call_another_server(call_server: dict, bot_name: str, uuid: str, error_type:
     - error_type: To display what error throw.
     '''
     global uuids
+    time.sleep(7.5)
     responseText = requests.get(
         f"http://{call_server['ip']}:{call_server['port']}/{call_server['trigger']}/create/{bot_name}/{uuid}").text
     displayStrings = "[Error] {}\n[BotName] {}\n[BotUuid] {}\n[BackupServerIP] {}\n[BackupServerPORT] {}\n[BackupServerApiStatusText] {}\n[Watting for next request]\n-------------------------------------------".format(
