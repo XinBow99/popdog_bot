@@ -280,7 +280,7 @@ def call_another_server(call_server: dict, bot_name: str, uuid: str, error_type:
         responseText
     )
     uuids[uuid].update({
-        'clicks': f'Call:{call_server}:{app.config["port"]}'
+        'clicks': f'Call:{call_server["ip"]}:{call_server["port"]}'
     })
     print(displayStrings)
 

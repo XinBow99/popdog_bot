@@ -26,7 +26,8 @@
 - [Installation](#Installation)
 - [About](#about)
 - [Usage](#usage)
-- [Demo figures](#Demofigures)
+  - [Only have an public IP](#OnlyHaveAnPublicIP)
+  - [More than the one public ip](#HaveManyPublicIP)
 
 ---
 
@@ -58,10 +59,11 @@ If you want get new uuid, call this route
 https://popdog.click/uuid
 ```
 or clear Storage on browser and refresh.
+
 ---
 
 ## 🏁 Usage <a name = "usage"></a>
-### If you `only have an public IP.`
+### If you `only have an public IP.` <a name="OnlyHaveAnPublicIP"></a>
 #### Please run this bash command. 
 If you `only have an IP` or you want start on `one server(computer)`.
 ```bash
@@ -72,18 +74,28 @@ $python3 BotStart_NoAnotherIP.py -p 8080 -t trigger
 
 Now you can access these routes.
 
-To create a bot event
-- http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
+- To create a bot event
+  - http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
-To visit bot status
+- To visit bot status
 
-- http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
+  - http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
 
 #### Success figure of start.
 ![start_one_ip](./DemoPhotos/start_one_ip.png "start_one_ip")
 
+#### Simple demo
+It's my command:
+```bash
+$python3 BotStart_NoAnotherIP.py -p 8080 -t xinbow99
+```
+Create bot session route
+```
+http://127.0.0.1:8080/xinbow99/create/Bot_Name/989f8956-7413-49ad-9f90-954228366bad
+```
+![run_one_ip](./DemoPhotos/run_one_ip.png "run_one_ip")
 ---
-### If you have more than the one public ip.
+### If you have more than the one public ip.<a name="HaveManyPublicIP"></a>
 #### Please run this bash command. 
 ```bash
 $python3 BotStart_HaveAnotherIP.py -p 18006 -t test_trigger -cip 172.18.18.18 -cp 18006 -ct test_trigger
@@ -96,17 +108,36 @@ $python3 BotStart_HaveAnotherIP.py -p 18006 -t test_trigger -cip 172.18.18.18 -c
 
 Now you can access these routes.
 
-To create a bot event
-- http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
+- To create a bot event
+  - http://`<ip>`:`<port>`/`<trigger-value>`/create/`<Bot_Name>`/`<Bot_UUID>`
 
-To visit bot status
+- To visit bot status
 
-- http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
+  - http://`<ip>`:`<port>`/`<trigger-value>`/lastupdate
 
 #### Success figure of start.
 ![start_another](./DemoPhotos/start_another.png "start_another")
 
+#### Simple demo
+It's my command on my server A:
+```bash
+$python3.8 BotStart_HaveAnotherIP.py -p 18006 -t server-a -cip 163.xx.xx.37 -cp 18006 -ct server-b
+```
+So, i choise server A be my Main server. Create bot session route
+```
+http://163.xx.xx.38:18006/server-a/create/Bot_Name/989f8956-7413-49ad-9f90-954228366bad
+```
+![servera](./DemoPhotos/servera.png "servera")
+Visit status by `http://163.xx.xx.38:18006/server-a/lastupdate`, you can also do that on you localhost too. When you start `BotStart_NoAnotherIP.py`
+![status](./DemoPhotos/status.png "status")
+When server A got an error, that will call Server B to continue.
+![remain](./DemoPhotos/remain.png "remain")
+
+It's my command on my server B:
+```bash
+$python3.8 BotStart_HaveAnotherIP.py -p 18006 -t server-b -cip 163.xx.xx.38 -cp 18006 -ct server-a
+```
 ---
 
-## 🎈 Demo figures <a name="Demofigures"></a>
+
 
