@@ -136,7 +136,7 @@ So, i choise server A be my Main server. Create bot session route
 ```
 http://163.xx.xx.38:18006/server-a/create/Bot_Name/989f8956-7413-49ad-9f90-954228366bad
 ```
-![servera](./DemoPhotos/servera.png "servera")
+![servera](./DemoPhotos/server-a.png "servera")
 Visit status by `http://163.xx.xx.38:18006/server-a/lastupdate`, you can also do that on you localhost too. When you start `BotStart_NoAnotherIP.py`
 ![status](./DemoPhotos/status.png "status")
 When server A got an error, that will call Server B to continue.
