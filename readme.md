@@ -51,9 +51,13 @@ and `python version >= 3`
 ## About <a name = "about"></a>
 ### How to get uuid
 Open the Developer Tools on your browser, and switch to `Application` tab.
+
 ![uuid](./DemoPhotos/uuid.png "uuid")
+
 you can also insert `uuid`
+
 ![uuid2](./DemoPhotos/console.png "uuid2")
+
 If you want get new uuid, call this route 
 ```
 https://popdog.click/uuid
