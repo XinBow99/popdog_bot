@@ -24,7 +24,9 @@
 ## 📝 Table of Contents
 
 - [Installation](#Installation)
+- [About](#about)
 - [Usage](#usage)
+- [Demo figures](#Demofigures)
 
 ---
 
@@ -42,6 +44,22 @@ Make sure your environment have those package.
 - json
 
 and `python version >= 3`
+
+---
+
+## About <a name = "about"></a>
+### How to get uuid
+Open the Developer Tools on your browser, and switch to `Application` tab.
+![uuid](./DemoPhotos/uuid.png "uuid")
+you can also insert `uuid`
+![uuid2](./DemoPhotos/console.png "uuid2")
+If you want get new uuid, call this route 
+```
+https://popdog.click/uuid
+```
+or clear Storage on browser and refresh.
+---
+
 ## 🏁 Usage <a name = "usage"></a>
 ### If you `only have an public IP.`
 #### Please run this bash command. 
@@ -89,3 +107,6 @@ To visit bot status
 ![start_another](./DemoPhotos/start_another.png "start_another")
 
 ---
+
+## 🎈 Demo figures <a name="Demofigures"></a>
+
