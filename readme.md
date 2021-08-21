@@ -28,7 +28,7 @@
 - [Usage](#usage)
   - [Only have an public IP](#OnlyHaveAnPublicIP)
   - [More than the one public ip](#HaveManyPublicIP)
-
+- [HighestPPsEver](#pps)
 ---
 
 ## Installation <a name = "Installation"></a>
@@ -147,6 +147,8 @@ It's my command on my server B:
 $python3.8 BotStart_HaveAnotherIP.py -p 18006 -t server-b -cip 163.xx.xx.38 -cp 18006 -ct server-a
 ```
 ---
+## PPS very high <a name = "pps"></a>
+![pps](./DemoPhotos/pps.png "pps")
 
 
 

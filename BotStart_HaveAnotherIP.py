@@ -12,7 +12,7 @@ import json
 import gc
 requests.packages.urllib3.disable_warnings()
 ###########################
-# 牛
+# 144
 # Global variables
 # uuids is saving the all of bots status of this server.
 uuids = {
