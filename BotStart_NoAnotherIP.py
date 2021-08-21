@@ -129,8 +129,8 @@ def dog(bot_name: str, uuid: str):
     # Click request url and datas
     url = "https://popdog.click/clicked/v2"
     data = {
-        # pop per request. Max 2000. Min 1.
-        "clicks": 2000,
+        # pop per request. Max 20000. Min 1.
+        "clicks": 20000,
         # change username to your name
         "username": bot_name,
         # change uuid to your uuid
@@ -210,7 +210,7 @@ def dog(bot_name: str, uuid: str):
                         raise DogError(
                             "x-ratelimit-remaining are run out!")
                     # pop per times should wait 8 secs to clicking continue
-                    time.sleep(8)
+                    time.sleep(10)
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need Sleep a moment...

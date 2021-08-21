@@ -164,8 +164,8 @@ def dog(bot_name: str, uuid: str):
     # Click request url and datas
     url = "https://popdog.click/clicked/v2"
     data = {
-        # pop per request. Max 2000. Min 1.
-        "clicks": 2000,
+        # pop per request. Max 20000. Min 1.
+        "clicks": 20000,
         # change username to your name
         "username": bot_name,
         # change uuid to your uuid
@@ -189,6 +189,13 @@ def dog(bot_name: str, uuid: str):
         "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
     }
+
+    pop_dog_session = requests.Session()
+    pop_dog_max_retries = requests.adapters.HTTPAdapter(max_retries=0)
+    pop_dog_session.mount('http://',pop_dog_max_retries)
+    pop_dog_session.mount('https://',pop_dog_max_retries)
+    pop_dog_session.headers = headers
+    pop_dog_session.verify = False
     ###############################
     # A loop, until bot got error #
     ###############################
@@ -214,9 +221,11 @@ def dog(bot_name: str, uuid: str):
             }
             try:
                 # To reuqest popdog api.
-                res = requests.post(url, headers=headers,
-                                    json=data, verify=False)
+                resRequestStartTime = time.time()
+                res = pop_dog_session.post(url, json=data, timeout=(.5,2))
                 # Add Request times
+                resRequestEndTime = time.time()
+                requestRemainingTime = "{:.2f}".format(resRequestEndTime - resRequestStartTime)
                 req_times += 1
                 # If request too much
                 if "Do not pet the Pop Dog too much" in res.text or res.status_code != 200:
@@ -230,13 +239,14 @@ def dog(bot_name: str, uuid: str):
                     ElapsedTime = time.time() - start_time
                     Diff = int(res.json()['clicks']) - start_click
                     Avg = Diff / ElapsedTime
-                    print("[Perfect] {}\n[Elapsed time] {:.2f}s\n[UUID] {}\n[Name] {}\n[Res] {}\n[Diff] {}\n[Avg] {}\n[x-ratelimit-remaining] {}\n{}".format(
+                    print("[Perfect] {}\n[Elapsed time] {:.2f}s\n[UUID] {}\n[Name] {}\n[Res] {}\n[Diff] {}\n[Avg] {}\n[PopdogRemainingTime] {}\n[x-ratelimit-remaining] {}\n{}".format(
                         req_times, ElapsedTime,
                         uuid,
                         bot_name,
                         res.text,
                         Diff,
                         Avg,
+                        requestRemainingTime,
                         res.headers['x-ratelimit-remaining'],
                         "----------------------------------------------------"
                     ))
@@ -249,7 +259,7 @@ def dog(bot_name: str, uuid: str):
                         raise DogError(
                             "Change Server x-ratelimit-remaining is 1 or below!")
                     # pop per times should wait 8 secs to clicking continue
-                    time.sleep(7.5)
+                    time.sleep(10)
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need change another server and request create route. So Replace "/" to "@"
@@ -278,7 +288,8 @@ def call_another_server(call_server: dict, bot_name: str, uuid: str, error_type:
     - error_type: To display what error throw.
     '''
     global uuids
-    time.sleep(7.5)
+    if 'timeout' not in error_type:
+        time.sleep(7.5)
     responseText = requests.get(
         f"http://{call_server['ip']}:{call_server['port']}/{call_server['trigger']}/create/{bot_name}/{uuid}").text
     displayStrings = "[Error] {}\n[BotName] {}\n[BotUuid] {}\n[BackupServerIP] {}\n[BackupServerPORT] {}\n[BackupServerApiStatusText] {}\n[Watting for next request]\n-------------------------------------------".format(
