@@ -289,7 +289,7 @@ def call_another_server(call_server: dict, bot_name: str, uuid: str, error_type:
     '''
     global uuids
     if 'timeout' not in error_type:
-        time.sleep(7.5)
+        time.sleep(16)
     responseText = requests.get(
         f"http://{call_server['ip']}:{call_server['port']}/{call_server['trigger']}/create/{bot_name}/{uuid}").text
     displayStrings = "[Error] {}\n[BotName] {}\n[BotUuid] {}\n[BackupServerIP] {}\n[BackupServerPORT] {}\n[BackupServerApiStatusText] {}\n[Watting for next request]\n-------------------------------------------".format(
