@@ -1,3 +1,4 @@
 {
-    "BotStart": 1
+    "BotStart": 1,
+    "PopDelay": 15.5
 }

@@ -12,7 +12,6 @@ import json
 import gc
 requests.packages.urllib3.disable_warnings()
 ###########################
-# 144
 # Global variables
 # uuids is saving the all of bots status of this server.
 uuids = {
@@ -185,8 +184,8 @@ def dog(bot_name: str, uuid: str):
 
     pop_dog_session = requests.Session()
     pop_dog_max_retries = requests.adapters.HTTPAdapter(max_retries=0)
-    pop_dog_session.mount('http://',pop_dog_max_retries)
-    pop_dog_session.mount('https://',pop_dog_max_retries)
+    pop_dog_session.mount('http://', pop_dog_max_retries)
+    pop_dog_session.mount('https://', pop_dog_max_retries)
     pop_dog_session.headers = headers
     pop_dog_session.verify = False
     ###############################
@@ -194,13 +193,13 @@ def dog(bot_name: str, uuid: str):
     ###############################
     while True:
         data = {
-        # pop per request. Max 2000000 ? not sure. Min 1.
-        "clicks": random.randint(20000,1000000),
-        # change username to your name
-        "username": bot_name,
-        # change uuid to your uuid
-        "uuid": uuid,
-        "token": "disabled"}
+            # pop per request. Max 2000000 ? not sure. Min 1.
+            "clicks": random.randint(20000, 1000000),
+            # change username to your name
+            "username": bot_name,
+            # change uuid to your uuid
+            "uuid": uuid,
+            "token": "disabled"}
         # Set a variable of Config.json
         config = open(file="config.json", mode="r", encoding="utf-8")
         readConfig = json.loads(
@@ -223,10 +222,11 @@ def dog(bot_name: str, uuid: str):
             try:
                 # To reuqest popdog api.
                 resRequestStartTime = time.time()
-                res = pop_dog_session.post(url, json=data, timeout=(.5,2))
+                res = pop_dog_session.post(url, json=data, timeout=(.5, 2))
                 # Add Request times
                 resRequestEndTime = time.time()
-                requestRemainingTime = "{:.2f}".format(resRequestEndTime - resRequestStartTime)
+                requestRemainingTime = "{:.2f}".format(
+                    resRequestEndTime - resRequestStartTime)
                 req_times += 1
                 # If request too much
                 if "Do not pet the Pop Dog too much" in res.text or res.status_code != 200:
@@ -260,7 +260,7 @@ def dog(bot_name: str, uuid: str):
                         raise DogError(
                             "Change Server x-ratelimit-remaining is 1 or below!")
                     # pop per times should wait 8 secs to clicking continue
-                    time.sleep(16)
+                    time.sleep(readConfig["PopDelay"])
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need change another server and request create route. So Replace "/" to "@"

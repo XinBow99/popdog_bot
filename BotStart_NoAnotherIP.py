@@ -210,8 +210,8 @@ def dog(bot_name: str, uuid: str):
                     if int(res.headers['x-ratelimit-remaining']) <= 1:
                         raise DogError(
                             "x-ratelimit-remaining are run out!")
-                    # pop per times should wait 8 secs to clicking continue
-                    time.sleep(16)
+                    # pop per times should wait readConfig["PopDelay"] secs to clicking continue
+                    time.sleep(readConfig["PopDelay"])
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need Sleep a moment...
