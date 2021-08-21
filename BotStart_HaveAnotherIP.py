@@ -163,14 +163,6 @@ def dog(bot_name: str, uuid: str):
     global uuids
     # Click request url and datas
     url = "https://popdog.click/clicked/v2"
-    data = {
-        # pop per request. Max 20000. Min 1.
-        "clicks": 20000,
-        # change username to your name
-        "username": bot_name,
-        # change uuid to your uuid
-        "uuid": uuid,
-        "token": "disabled"}
     ################################################################
     # handle bot times
     req_times = 0
@@ -200,6 +192,14 @@ def dog(bot_name: str, uuid: str):
     # A loop, until bot got error #
     ###############################
     while True:
+        data = {
+        # pop per request. Max 2000000 ? not sure. Min 1.
+        "clicks": random.randint(20000,1000000),
+        # change username to your name
+        "username": bot_name,
+        # change uuid to your uuid
+        "uuid": uuid,
+        "token": "disabled"}
         # Set a variable of Config.json
         config = open(file="config.json", mode="r", encoding="utf-8")
         readConfig = json.loads(
@@ -259,7 +259,7 @@ def dog(bot_name: str, uuid: str):
                         raise DogError(
                             "Change Server x-ratelimit-remaining is 1 or below!")
                     # pop per times should wait 8 secs to clicking continue
-                    time.sleep(10)
+                    time.sleep(16)
             except Exception as e:
                 # To handle all errors
                 # Because it's got an error, We need change another server and request create route. So Replace "/" to "@"
