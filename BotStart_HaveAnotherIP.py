@@ -192,20 +192,21 @@ def dog(bot_name: str, uuid: str):
     # A loop, until bot got error #
     ###############################
     while True:
-        data = {
-            # pop per request. Max 2000000 ? not sure. Min 1.
-            "clicks": random.randint(20000, 1000000),
-            # change username to your name
-            "username": bot_name,
-            # change uuid to your uuid
-            "uuid": uuid,
-            "token": "disabled"}
         # Set a variable of Config.json
         config = open(file="config.json", mode="r", encoding="utf-8")
         readConfig = json.loads(
             config.read()
         )
         config.close()
+        data = {
+            # pop per request. Max 2000000 ? not sure. Min 1.
+            "clicks": random.randint(readConfig["PopRange"]["Min"],readConfig["PopRange"]["Max"]),
+            # change username to your name
+            "username": bot_name,
+            # change uuid to your uuid
+            "uuid": uuid,
+            "token": "disabled"
+            }
         # If BotStart value is 0
         if readConfig["BotStart"] == 0:
             print("[Config]{}\nBotStart value is change to 0!\n{}".format(

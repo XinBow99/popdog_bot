@@ -1,4 +1,8 @@
 {
-    "BotStart": 1,
-    "PopDelay": 15.5
+    "BotStart": 0,
+    "PopDelay": 8,
+    "PopRange":{
+        "Max": 2000,
+        "Min": 2000
+    }
 }

@@ -153,7 +153,7 @@ def dog(bot_name: str, uuid: str):
         # Set a variable of Config.json
         data = {
         # pop per request. Max 2000000 ? not sure. Min 1.
-        "clicks": random.randint(20000,1000000),
+        "clicks": random.randint(readConfig["PopRange"]["Min"],readConfig["PopRange"]["Max"]),
         # change username to your name
         "username": bot_name,
         # change uuid to your uuid
